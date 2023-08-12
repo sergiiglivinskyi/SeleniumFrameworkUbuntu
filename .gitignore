@@ -1,0 +1,8 @@
+.idea/*
+.DS_Store
+target/*
+src/test/resources/webdrivers/chromedriver
+test-output/*
+MyLogs.log
+MyLogs.log.1
+MyLogs.log.2

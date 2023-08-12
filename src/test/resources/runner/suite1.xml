@@ -1,0 +1,30 @@
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd" >
+
+<suite name="Suite #1" parallel="classes" thread-count="2" verbose="1" >
+    <test name="BestBuy">
+        <groups>
+            <run>
+                <include name="checkbox"/>
+                <include name="login"/>
+                <include name="assertions"/>
+            </run>
+        </groups>
+        <classes>
+            <class name="testcases.TabAndScrollActionsTest" />
+            <class name="testcases.LoginFormTest" />
+            <class name="testcases.AssertionsSoftTest">
+                <methods>
+                    <exclude name="dropdown"/>
+                </methods>
+            </class>
+            <class name="testcases.AssertionsTest"/>
+        </classes>
+    </test>
+
+    <test name="MyFork">
+        <classes>
+            <class name="testcases.MyForkSignInTest"/>
+            <class name="testcases.MyForkSignUpTest"/>
+        </classes>
+    </test>
+</suite>

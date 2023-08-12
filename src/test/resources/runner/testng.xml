@@ -1,0 +1,49 @@
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd" >
+
+<suite name="All suites" verbose="1" >
+    <suite-files>
+<!--        <suite-file path="./suite1.xml" />-->
+        <suite-file path="./suite2.xml" />
+    </suite-files>
+</suite>
+
+
+<!--
+The first one will be run "Suite 1". Parallel="classes" therefore "BestBuy" test will be the first, "MyFork" - the second one.
+
+BestBuy test:
+- 1st run - switchTabAndScrollDown and verifyCheckBox
+(run 2 tests simultaneously from different classes because parallel="classes". "switchTabAndScrollDown" is only one test in the class,
+"verifyCheckBox" has priority = 1)
+
+- 2nd run -  fillEmailAndPasswordFieldAndValidateCheckbox
+(because it has priority = 2 and no more classes for parallel execution)
+
+- 3rd-5th run - fillEmailAndPasswordFields, fillEmailAndPasswordFieldAndPressEnter, fillEmailAndPasswordFieldAndValidateError
+(they have priority = 3)
+
+The tests are not going to be run:
+openSignInPage - it is not included to the group
+dropdown (AssertionsSoftTest class) - it has "assertions" group, but it is excluded in the class
+dropdown (AssertionsTest class) - it is not included to the group in this test
+
+MyFork test:
+MyForkSignInTest class and MyForkSignUpTest class run in parallel
+
+
+Suite 2 has parallel="tests" therefore "BankOfAmerica" test and "Amazon" test will be run simultaneously
+
+- 1st run - isEnabled and one method from "Amazon" test
+
+- 2nd run:
+dropdown (AssertionsTest class)
+(it has "driver" group)
+
+OR
+
+test2 (DriverInteractionsTest class) - it has priority = 1 + "driver" group
+test1 (DriverInteractionsTest class) - it has priority = 2 + "driver" group
+
+The tests are not going to be run:
+test3 (DriverInteractionsTest class) - it is not included to the group
+-->
